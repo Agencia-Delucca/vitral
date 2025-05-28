@@ -56,8 +56,8 @@ function menu_register()
 {
   register_nav_menus(
     array(
-      'menu-principal' => __('Menu Principal', 'santes'),
-      'menu-rodape' => __('Menu Rodapé', 'santes'),
+      'menu-principal' => __('Menu Principal', 'menu'),
+      'menu-rodape' => __('Menu Rodapé', 'menu'),
     )
   );
 }
