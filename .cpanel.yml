@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/delucca/public_html/clientes/vitral/wp-content/themes/vitralSite
-    - /bin/rsync -av --exclude=".git*" --exclude=".cpanel.yml" ./ $DEPLOYPATH
