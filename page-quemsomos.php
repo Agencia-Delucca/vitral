@@ -47,7 +47,6 @@ $equipe_ceo_imagem = get_field('equipe_ceo_imagem');
 </style>
 
 <div id="quemSomos">
-
   <div class="bloco-1">
     <div class="container-xxl py-5">
       <div class="grid">
