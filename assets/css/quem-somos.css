@@ -1,0 +1,121 @@
+#quemSomos {
+  background: #EEE;
+}
+/* BLOCO 1 */
+#quemSomos .bloco-1 {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#quemSomos .bloco-1 .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+}
+#quemSomos .bloco-1 .grid .item-2 {
+  padding: 48px;
+  border-radius: 8px;
+  background: #fff;
+}
+#quemSomos .bloco-1 .grid .item-2 h1,
+#quemSomos .bloco-1 .grid .item-2 h2 {
+  color: var(--clr-primary);
+  font-weight: 400;
+}
+#quemSomos .bloco-1 .grid .item-2 h1 {
+  font-family: "Quentin";
+  font-size: 64px !important;
+}
+#quemSomos .bloco-1 .grid .item-2 h2 {
+  max-width: 650px;
+}
+#quemSomos .bloco-1 .grid .item-2 .cta {
+  padding: 16px 32px;
+  border-radius: 8px;
+  background: #004B82;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+#quemSomos .bloco-1 .grid .item-2 .cta:hover {
+  background: #000;
+}
+/* BLOCO 3 */
+#quemSomos .bloco-3 .title {
+  text-align: center;
+}
+#quemSomos .bloco-3 .title h2,
+#quemSomos .bloco-3 .title h3 {
+  font-weight: 400;
+}
+#quemSomos .bloco-3 .title h3 {
+  font-size: 64px !important;
+  font-family: "Quentin";
+}
+#quemSomos .bloco-3 .grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+  gap: 16px;
+}
+#quemSomos .bloco-3 .grid .item-1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 16px;
+  grid-area: 1 / 1 / 4 / 4;
+}
+#quemSomos .bloco-3 .grid .item-1 .wrapper {
+  display: flex;
+  width: 100%;
+  flex-grow: 1;
+}
+#quemSomos .bloco-3 .grid .item-1 .wrapper .img__wrapper {
+  overflow: hidden;
+  height: 100%;
+  width: 30%;
+  border-radius: 12px 0 0 12px;
+}
+#quemSomos .bloco-3 .grid .item-1 .wrapper .img__wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+#quemSomos .bloco-3 .grid .item-1 .wrapper .img__wrapper img:hover {
+  transform: scale(1.05);
+}
+#quemSomos .bloco-3 .grid .item-1 .wrapper .text__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  padding: 32px;
+  border-radius: 0 12px 12px 0;
+  background: #fff;
+  color: var(--clr-primary);
+}
+#quemSomos .bloco-3 .grid .item-2 {
+  grid-area: 1 / 4 / 4 / 6;
+}
+#quemSomos .bloco-3 .grid .item-2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center;
+  border-radius: 12px 0 0 12px;
+}
+/* BLOCO 4 */
+#quemSomos .bloco-4 {
+  background: linear-gradient(180deg, #EEE 30%, var(--clr-primary) 30%);
+}
+#quemSomos .bloco-4 .grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  width: 100%;
+  gap: 16px;
+}
+#quemSomos .bloco-4 .grid .ceo {
+  grid-area: 1 / 1 / 3 / 3;
+}

@@ -1,0 +1,102 @@
+#single {
+  background-color: #eee;
+}
+/* CONTEUDO */
+#post .post-thumbnail {
+  position: relative;
+  overflow: hidden;
+  height: 637px;
+  border-radius: 16px;
+}
+#post .post-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+#post .post-thumbnail img:hover {
+  transform: scale(1.05);
+}
+#post .wp-block-image {
+  margin: 32px auto;
+}
+#post .addtoany_content {
+  margin: 32px auto;
+}
+#post .addtoany_header {
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: var(--clr-secondary);
+}
+/* RELACIONADOS */
+#post-relacionados .grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+#post-relacionados .grid .post {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+#post-relacionados .grid .post:hover {
+  box-shadow: 0px 0px 10px 0px rgba(152, 30, 39, 0.1);
+}
+#post-relacionados .grid .post:hover > .img__wrapper {
+  transform: scale(1.05);
+}
+#post-relacionados .grid .post .img__wrapper {
+  aspect-ratio: 590/280;
+  width: 100%;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  transform-origin: bottom center;
+}
+#post-relacionados .grid .post .infos__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  gap: 16px;
+  padding: 32px;
+}
+#post-relacionados .grid .post .infos__wrapper button {
+  cursor: pointer;
+  width: fit-content;
+  font-weight: 700;
+  text-decoration: underline;
+  background: none;
+  color: var(--clr-primary);
+}
+#single__sidebar-mobile {
+  display: none;
+}
+@media (max-width: 991px) {
+  #single {
+    display: flex;
+    flex-direction: column;
+  }
+  #post .post-thumbnail {
+    height: auto;
+    aspect-ratio: 550/400;
+  }
+  #single__sidebar-desk {
+    display: none;
+  }
+  #single__sidebar-mobile {
+    display: block;
+    order: 4;
+  }
+  #post-relacionados {
+    order: 2;
+    padding-bottom: 3rem;
+  }
+  #post-relacionados .grid {
+    grid-template-columns: 1fr;
+  }
+  #single__newsletter {
+    order: 3;
+  }
+}

@@ -1,0 +1,96 @@
+/* RESET */
+#orcamento .form__wrapper p {
+  margin-bottom: 0;
+  padding: 0;
+}
+#orcamento .form__wrapper br {
+  display: none;
+}
+#orcamento .content__wrapper {
+  background: linear-gradient(180deg, #eee 0%, #eee 70%, #004B82 70%, #004B82 100%);
+}
+/* INPUTS */
+#orcamento .form__wrapper label {
+  width: 100%;
+}
+#orcamento .form__wrapper .wpcf7-form-control {
+  width: 100%;
+  padding: 16px 32px;
+  border-radius: 12px;
+  border: 1px solid #C7C7C7;
+  color: var(--clr-primary);
+  font-weight: 500;
+}
+#orcamento .form__wrapper .wpcf7-form-control::placeholder {
+  color: var(--clr-primary);
+  font-weight: 500;
+}
+#orcamento .form__wrapper .wpcf7-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+#orcamento .form__wrapper .select .wpcf7-form-control-wrap {
+  position: relative;
+}
+#orcamento .form__wrapper .select .wpcf7-form-control-wrap::before {
+  content: url(../imgs/arrow-select.svg);
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  top: calc(50% + 8px);
+  right: 16px;
+  transform: translateY(-50%);
+}
+#orcamento .form__wrapper .wpcf7-file {
+  padding: 0;
+  border: none;
+}
+#orcamento .form__wrapper input[type="file" i]::-webkit-file-upload-button {
+  cursor: pointer;
+  min-height: 58px;
+  margin-right: 16px;
+  padding: 8px 24px;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--clr-primary);
+  color: #fff;
+  transition: all 0.3s ease;
+}
+#orcamento .form__wrapper input[type="file" i]::-webkit-file-upload-button:hover {
+  background-color: #000;
+  transform: scale(1.05);
+}
+#orcamento .form__wrapper .wpcf7-textarea {
+  min-height: 300px;
+}
+/* BOTÃO ENVIAR */
+#orcamento .form__wrapper .submit__wrapper {
+  width: fit-content;
+}
+#orcamento .form__wrapper .submit__wrapper p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#orcamento .form__wrapper .submit__wrapper .wpcf7-submit {
+  padding: 16px 64px;
+  border-radius: 8px;
+  border: none;
+  color: var(--clr-primary);
+  transition: all 0.3s ease;
+  transform-origin: left center;
+}
+#orcamento .form__wrapper .submit__wrapper .wpcf7-submit:hover {
+  background: #000;
+  color: #fff;
+  transform: scale(1.05);
+}
+/* CONFIRMAÇÃO */
+#orcamento .form__wrapper .wpcf7-response-output {
+  padding: 0;
+  margin: 0;
+  border: none !important;
+  color: #fff;
+}
