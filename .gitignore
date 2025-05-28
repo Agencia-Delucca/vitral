@@ -1,7 +1,8 @@
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Ambientes de desenvolvimento
+.vscode/
+.idea/
 *.log
-node_modules/
-uploads/
-cache/
-*.zip
-*.tar.gz
-wp-content/uploads/
