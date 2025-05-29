@@ -147,6 +147,18 @@ function enqueue_central_de_atendimento_css() {
   }
 }
 
+function enqueue_produtos_css() {
+  if (!wp_style_is('produtos', 'enqueued')) {
+    wp_enqueue_style(
+      'produtos',
+      get_template_directory_uri() . '/assets/css/produtos.css',
+      array(),
+      null,
+      'all'
+    );
+  }
+}
+
 function enqueue_quem_somos_css() {
   if (!wp_style_is('quem-somos', 'enqueued')) {
     wp_enqueue_style(
