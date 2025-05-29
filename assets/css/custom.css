@@ -45,6 +45,9 @@ h6 {
 .text-secondary-hover {
   color: var(--clr-secondary-hover) !important;
 }
+.text-gray {
+  color: #3D3D3D !important;
+}
 .text-dark-gray {
   color: var(--clr-dark-gray) !important;
 }
@@ -204,7 +207,7 @@ body.loaded #site-loader {
   gap: 5%;
 }
 .navbar__top ul a {
-  font-weight: 600;
+  font-weight: 500;
 }
 /* NAVBAR MOBILE */
 .navbar__mobile .navbar-brand img {
