@@ -103,4 +103,41 @@ function portfolio_register() {
 }
 add_action('init', 'portfolio_register');
 
+function produto_register() {
+
+    $labels = array(
+        'name'                  => _x('Produto', 'post type general name'),
+        'singular_name'         => _x('Produto', 'post type singular name'),
+        'add_new'               => _x('Adicionar Novo', 'produto'),
+        'add_new_item'          => __('Adicionar Novo Produto'),
+        'edit_item'             => __('Editar Produto'),
+        'new_item'              => __('Novo Produto'),
+        'view_item'             => __('Ver Produto'),
+        'search_items'          => __('Procurar Produto'),
+        'not_found'             => __('Nada encontrado'),
+        'not_found_in_trash'    => __('Nada encontrado na lixeira'),
+        'parent_item_colon'     => '',
+        'menu_name'             => 'Produto',
+    );
+
+    $args = array(
+        'labels'                => $labels,
+        'public'                => true,
+        'publicly_queryable'    => true,
+        'show_ui'               => true,
+        'show_in_menu'          => true,
+        'query_var'             => true,
+        'rewrite'               => true,
+        'capability_type'       => 'post',
+        'has_archive'           => false,
+        'hierarchical'          => false,
+        'menu_position'         => 6,
+        'menu_icon'             => 'dashicons-images-alt',
+        'supports'              => array('title', 'thumbnail', 'excerpt'),
+    );
+
+    register_post_type('produto', $args);
+}
+add_action('init', 'produto_register');
+
 ?>
