@@ -22,7 +22,7 @@
             echo '<li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
           }
           elseif (is_singular('produto')) {
-            echo '<li class="breadcrumb-item"><a href="' . home_url('/nossos-produtos') . '">Nossos Produtos</a></li>';
+            echo '<li class="breadcrumb-item"><a href="' . home_url('/produto') . '">Produtos</a></li>';
             echo '<li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
           } elseif (is_singular()) {
             $post_type = get_post_type();
