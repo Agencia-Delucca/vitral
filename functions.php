@@ -63,7 +63,8 @@ function menu_register()
 }
 add_action('after_setup_theme', 'menu_register');
 
-function set_posts_per_page_for_search($query) {
+function set_posts_per_page_for_search($query)
+{
   if (!is_admin() && $query->is_search() && $query->is_main_query()) {
     $query->set('posts_per_page', 16);
     $query->set('post_status', 'publish');
@@ -87,7 +88,8 @@ function carregar_css_homepage()
 }
 add_action('wp_enqueue_scripts', 'carregar_css_homepage');
 
-function enqueue_blog_css() {
+function enqueue_blog_css()
+{
   if (!wp_style_is('blog', 'enqueued')) {
     wp_enqueue_style(
       'blog',
@@ -99,7 +101,8 @@ function enqueue_blog_css() {
   }
 }
 
-function enqueue_sidebar_css() {
+function enqueue_sidebar_css()
+{
   if (!wp_style_is('sidebar', 'enqueued')) {
     wp_enqueue_style(
       'sidebar',
@@ -123,7 +126,8 @@ function enqueue_sidebar_css() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_sidebar_css');
 
-function enqueue_orcamento_css() {
+function enqueue_orcamento_css()
+{
   if (!wp_style_is('orcamento', 'enqueued')) {
     wp_enqueue_style(
       'orcamento',
@@ -135,7 +139,8 @@ function enqueue_orcamento_css() {
   }
 }
 
-function enqueue_central_de_atendimento_css() {
+function enqueue_central_de_atendimento_css()
+{
   if (!wp_style_is('central_de_atendimento', 'enqueued')) {
     wp_enqueue_style(
       'central-de-atendimento',
@@ -147,7 +152,8 @@ function enqueue_central_de_atendimento_css() {
   }
 }
 
-function enqueue_produtos_css() {
+function enqueue_produtos_css()
+{
   if (!wp_style_is('produtos', 'enqueued')) {
     wp_enqueue_style(
       'produtos',
@@ -159,7 +165,63 @@ function enqueue_produtos_css() {
   }
 }
 
-function enqueue_quem_somos_css() {
+function enqueue_single_produtos_css() {
+  if (!wp_style_is('single-produtos', 'enqueued')) {
+    wp_enqueue_style(
+      'single-produtos',
+      get_template_directory_uri() . '/assets/css/single-produtos.css',
+      array(),
+      null,
+      'all'
+    );
+
+    $inline_script = '
+      const swiperGaleria = new Swiper("#single .galeria", {
+        slidesPerView: 1,
+        spaceBetween: 16,
+        loop: true,
+        autoplay: {
+          delay: 5000,
+          pauseOnMouseEnter: true,
+        },
+        pagination: {
+          el: ".galeria .swiper-pagination",
+          clickable: true,
+        },
+      });
+
+      const swiper = new Swiper("#single .cores__slide", {
+        slidesPerView: 6,
+        breakpoints: {
+          1200: {
+            slidesPerView: 6,
+          },
+          992: {
+            slidesPerView: 5,
+          },
+          768: {
+            slidesPerView: 4,
+          },
+          0: {
+            slidesPerView: 2,
+          },
+        },
+        freeMode: true,
+        spaceBetween: 16,
+        pagination: {
+          el: ".cores__slide .swiper-pagination",
+          clickable: true,
+        },
+      });
+    ';
+
+    wp_add_inline_script('swiper', $inline_script);
+  }
+}
+add_action('wp_enqueue_scripts', 'enqueue_single_produtos_css');
+
+function enqueue_quem_somos_css()
+{
   if (!wp_style_is('quem-somos', 'enqueued')) {
     wp_enqueue_style(
       'quem-somos',
@@ -171,7 +233,8 @@ function enqueue_quem_somos_css() {
   }
 }
 
-function enqueue_search_css() {
+function enqueue_search_css()
+{
   if (!wp_style_is('search', 'enqueued')) {
     wp_enqueue_style(
       'search',
