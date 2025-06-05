@@ -1,12 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
-  var wpcf7Elm = document.querySelector( '.wpcf7' );
+document.addEventListener('contextmenu', function(e) {
+  e.preventDefault();
 
-  wpcf7Elm.addEventListener( 'wpcf7mailsent', function( event ) {
-    alert( "Cadastro efetuado com sucesso!" );
-  }, false );
+  const desktop = window.innerWidth >= 992;
 
-  if (document.getElementById("home")) {
-    document.querySelector("footer #newsletter").style.display = "none";
+  const toast = document.querySelector('.toast__alert');
+  if (toast && desktop) {
+    toast.classList.add('active');
+    setTimeout(() => {
+      toast.classList.remove('active');
+    }, 5000);
   }
 });
 
@@ -15,14 +17,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const navbar = document.querySelector(".navbar");
 
   window.addEventListener("scroll", function () {
+    const home = document.querySelector("#home");
     const currentScroll =
       window.pageYOffset || document.documentElement.scrollTop;
 
-    if (currentScroll > lastScrollTop) {
-      // Rolando para baixo
-      navbar.style.top = "-77px"; // ajustável conforme altura da navbar
-    } else {
-      // Rolando para cima
+    if (currentScroll > lastScrollTop && !home) {
+      navbar.style.top = "-77px";
+    }
+    else if (currentScroll > lastScrollTop && home) {
+      navbar.style.top = "-108px";
+    }
+    else {
       navbar.style.top = "0";
     }
 

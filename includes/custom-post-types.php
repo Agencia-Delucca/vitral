@@ -127,7 +127,7 @@ function produto_register() {
         'show_ui'               => true,
         'show_in_menu'          => true,
         'query_var'             => true,
-        'rewrite'               => true,
+        'rewrite'               => array('slug' => 'produtos', 'with_front' => false),
         'capability_type'       => 'post',
         'has_archive'           => false,
         'hierarchical'          => false,

@@ -152,6 +152,19 @@ function enqueue_central_de_atendimento_css()
   }
 }
 
+function enqueue_single_portfolio_css()
+{
+  if (!wp_style_is('single_portfolio', 'enqueued')) {
+    wp_enqueue_style(
+      'single-portfolio',
+      get_template_directory_uri() . '/assets/css/single-portfolio.css',
+      array(),
+      null,
+      'all'
+    );
+  }
+}
+
 function enqueue_produtos_css()
 {
   if (!wp_style_is('produtos', 'enqueued')) {
@@ -218,7 +231,6 @@ function enqueue_single_produtos_css() {
     wp_add_inline_script('swiper', $inline_script);
   }
 }
-add_action('wp_enqueue_scripts', 'enqueue_single_produtos_css');
 
 function enqueue_quem_somos_css()
 {
@@ -284,88 +296,5 @@ function enqueue_css_portfolio()
     );
   }
 }
-
-function carregar_scripts_portfolio_interna()
-{
-  if (is_front_page()) {
-    wp_enqueue_style(
-      'css-portfolio-interna',
-      get_template_directory_uri() . '/assets/css/portfolio-interna.css',
-      array(),
-      '1.0'
-    );
-
-    wp_add_inline_script('swiper', '
-          const swiperPortfolio = new Swiper("#portfolioInterna .portfolio__slider", {
-              loop: true,
-              autoplay: {
-                delay: 5000,
-                pauseOnMouseEnter: true,
-              },
-              pagination: {
-                el: ".portfolio__slider .swiper-pagination",
-                clickable: true,
-              },
-              breakpoints: {
-                0: {
-                  slidesPerView: 1,
-                },
-                768: {
-                  slidesPerView: 2,
-                },
-                1024: {
-                  slidesPerView: 3,
-                },
-                1200: {
-                  slidesPerView: 4,
-                },
-              },
-          });
-      ');
-  }
-}
-add_action('wp_enqueue_scripts', 'carregar_scripts_portfolio_interna');
-
-function carregar_scripts_unidades()
-{
-  if (is_front_page()) {
-    wp_enqueue_style(
-      'css-unidades',
-      get_template_directory_uri() . '/assets/css/unidades.css',
-      array(),
-      '1.0'
-    );
-
-    wp_add_inline_script('swiper', '
-          const swiperUnidades = new Swiper("#unidades", {
-              loop: true,
-              spaceBetween: 32,
-              navigation: {
-                nextEl: "#unidades .swiper-button-next",
-                prevEl: "#unidades .swiper-button-prev",
-              },
-              breakpoints: {
-                1500: {
-                  slidesPerView: 4,
-                },
-                992: {
-                  slidesPerView: 3,
-                },
-                768: {
-                  slidesPerView: 2,
-                },
-                576: {
-                  slidesPerView: 1,
-                }
-              },
-              pagination: {
-                  el: "#unidades .swiper-pagination",
-                  clickable: true,
-              },
-          });
-      ');
-  }
-}
-add_action('wp_enqueue_scripts', 'carregar_scripts_unidades');
 
 ?>

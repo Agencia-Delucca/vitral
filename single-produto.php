@@ -52,7 +52,7 @@ $comparativo_titulo = get_field('comparativo_titulo');
                 </p>
               </div>
               <div class="btn__wrapper">
-                <a href="" target="_blank" rel="noopener noreferrer">
+                <a href="<?= home_url() ?>/orcamento">
                   Solicitar orçamento
                 </a>
               </div>
