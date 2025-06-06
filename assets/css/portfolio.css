@@ -59,3 +59,13 @@
 #portfolio .grid .item .infos__wrapper p {
   margin-bottom: 0;
 }
+@media (min-width: 769px) and (max-width: 1024px) {
+  #portfolio .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 768px) {
+  #portfolio .grid {
+    grid-template-columns: 1fr;
+  }
+}

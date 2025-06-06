@@ -159,3 +159,34 @@
   background: #000;
   transform: scale(1.05);
 }
+@media (max-width: 1024px) {
+  #produtos .produtos .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  #produtos .inovacoes .grid {
+    grid-template-columns: 1fr;
+  }
+  #produtos .inovacoes .grid .item:nth-child(13n + 1),
+  #produtos .inovacoes .grid .item:nth-child(13n + 2),
+  #produtos .inovacoes .grid .item:nth-child(13n + 3),
+  #produtos .inovacoes .grid .item:nth-child(13n + 4),
+  #produtos .inovacoes .grid .item:nth-child(13n + 5),
+  #produtos .inovacoes .grid .item:nth-child(13n + 6),
+  #produtos .inovacoes .grid .item:nth-child(13n + 7),
+  #produtos .inovacoes .grid .item:nth-child(13n + 8),
+  #produtos .inovacoes .grid .item:nth-child(13n + 9),
+  #produtos .inovacoes .grid .item:nth-child(13n + 10),
+  #produtos .inovacoes .grid .item:nth-child(13n + 11),
+  #produtos .inovacoes .grid .item:nth-child(13n + 12),
+  #produtos .inovacoes .grid .item:nth-child(13n + 13) { 
+    grid-column: auto; 
+  }
+}
+@media (max-width: 768px) {
+  #produtos .topo h1 {
+    font-size: 36px !important;
+  }
+  #produtos .produtos .grid {
+    grid-template-columns: 1fr;
+  }
+}
