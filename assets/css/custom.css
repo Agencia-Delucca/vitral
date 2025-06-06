@@ -97,6 +97,10 @@ h6 {
     padding-right: 16px;
   }
 }
+/* FANCYBOX */
+.fancybox-image {
+  border-radius: 16px;
+}
 /* LOADER */
 body:not(.loaded) {
   overflow: hidden;

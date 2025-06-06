@@ -34,3 +34,11 @@ document.addEventListener("DOMContentLoaded", function () {
     lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
   });
 });
+
+Fancybox.bind("[data-fancybox]", {
+  animated: true,
+  zoom: true,
+  Image: {
+    zoom: true,
+  }
+});

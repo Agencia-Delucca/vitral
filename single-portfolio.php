@@ -17,9 +17,9 @@ $texto = get_field('texto');
           <?php if ($galeria): ?>
             <div class="galeria <?php if (count($galeria) > 1): ?>scroll<?php endif; ?>">
               <?php foreach ($galeria as $image): ?>
-                <img
-                  src="<?php echo $image; ?>"
-                  class="w-100">
+                <a href="<?php echo $image; ?>" data-fancybox="gallery">
+                  <img src="<?php echo $image; ?>" class="w-100">
+                </a>
               <?php endforeach; ?>
             </div>
           <?php endif; ?>
@@ -58,7 +58,6 @@ $texto = get_field('texto');
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <?php get_footer(); ?>
