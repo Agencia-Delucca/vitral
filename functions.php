@@ -86,9 +86,21 @@ function carregar_css_homepage()
       array(),
       '1.0'
     );
+
+    $inline_home_script = '
+      const swiperReviews = new Swiper("#home .depoimentos__slide", {
+        slidesPerView: 4,
+        spaceBetween: 16,
+        pagination: {
+          el: "#home .depoimentos__slide .swiper-pagination",
+          clickable: true,
+        },
+      });
+    ';
+
+    wp_add_inline_script('swiper', $inline_home_script);
   }
 }
-add_action('wp_enqueue_scripts', 'carregar_css_homepage');
 
 function enqueue_blog_css()
 {
@@ -180,7 +192,8 @@ function enqueue_produtos_css()
   }
 }
 
-function enqueue_single_produtos_css() {
+function enqueue_single_produtos_css()
+{
   if (!wp_style_is('single-produtos', 'enqueued')) {
     wp_enqueue_style(
       'single-produtos',

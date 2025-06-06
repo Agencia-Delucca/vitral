@@ -46,7 +46,7 @@ $post_6_link = get_field('post_6_link');
       </div>
     </div>
 
-    <div class="primary-posts container-xxl pt-5 mt-3">
+    <!-- <div class="primary-posts container-xxl pt-5 mt-3">
       <div class="grid">
         <div class="item">
           <a href="<?= $post_1_link; ?>">
@@ -121,7 +121,7 @@ $post_6_link = get_field('post_6_link');
           </a>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="main-posts container-xxl pt-5">
       <div class="grid">

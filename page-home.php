@@ -1,4 +1,9 @@
-<?= get_header(); // Template Name: Home
+<?= get_header();
+// Template Name: Home
+
+if (function_exists('carregar_css_homepage')) {
+  carregar_css_homepage();
+}
 
 // TOPO
 $topo_video = get_field('topo_video');
@@ -21,12 +26,47 @@ $portfolio_titulo = get_field('portfolio_titulo');
 $portfolio_subtitulo = get_field('portfolio_subtitulo');
 $portfolio_cta = get_field('portfolio_cta');
 
+// DEPOIMENTOS
+$depoimentos_titulo = get_field('depoimentos_topo_titulo');
+$depoimentos_img = get_field('depoimentos_topo_imagem');
+$depoimentos_img_m  = get_field('depoimentos_topo_imagem_m');
+
 // BLOG
 $blog_titulo = get_field('blog_titulo');
 $blog_subtitulo = get_field('blog_subtitulo');
 $blog_cta = get_field('blog_cta');
 
+// ORÇAMENTO
+$orcamento_titulo = get_field('orcamento_titulo');
+$orcamento_texto = get_field('orcamento_texto');
+$orcamento_cta = get_field('orcamento_cta');
+$orcamento_img = get_field('orcamento_img');
+$orcamento_img_mob = get_field('orcamento_img_mob');
+
+// ATENDIMENTO
+$atendimento_titulo = get_field('atendimento_titulo');
+$atendimento_texto = get_field('atendimento_texto');
+$atendimento_cta = get_field('atendimento_cta');
+$atendimento_img = get_field('atendimento_img');
+$atendimento_img_mob = get_field('atendimento_img_mob');
+
 ?>
+
+<style>
+  <?php if ($depoimentos_img): ?>@media (min-width: 992px) {
+    #home .depoimentos .title {
+      background: center / cover no-repeat url('<?php echo $depoimentos_img; ?>');
+    }
+  }
+
+  <?php endif; ?><?php if ($depoimentos_img_m): ?>@media (max-width: 991px) {
+    #home .depoimentos .title {
+      background: center / cover no-repeat url('<?php echo $depoimentos_img_m; ?>');
+    }
+  }
+
+  <?php endif; ?>
+</style>
 
 <div id="home">
   <div class="topo">
@@ -112,6 +152,63 @@ $blog_cta = get_field('blog_cta');
     </div>
   </div>
 
+  <div class="depoimentos pb-5">
+    <div class="title pt-5">
+      <div class="container-xxl">
+        <h2 class="mb-0 text-primary">
+          <?= $depoimentos_titulo ?>
+        </h2>
+      </div>
+    </div>
+    <div class="container-xxl depoimentos__wrapper">
+      <div class="depoimentos__slide">
+        <div class="swiper-wrapper mb-5">
+          <?php if (have_rows('reviews')) : ?>
+            <?php while (have_rows('reviews')) : the_row();
+              $imagem = get_sub_field('imagem');
+              $texto = get_sub_field('texto');
+              $avatar = get_sub_field('avatar');
+              $nome = get_sub_field('nome');
+              $ocupacao = get_sub_field('ocupacao');
+              $video = get_sub_field('video');
+            ?>
+              <div class="swiper-slide item">
+                <div class="img__wrapper">
+                  <div class="img" style="background-image: url('<?= esc_url($imagem); ?>');"></div>
+                </div>
+                <div class="text__wrapper">
+                  <p class="text-primary mb-0"><?= esc_html($texto); ?></p>
+                  <div class="bottom__wrapper">
+                    <div class="info__wrapper">
+                      <div class="img__wrapper">
+                        <img src="<?= esc_url($avatar); ?>" alt="<?= esc_attr($nome); ?>">
+                      </div>
+                      <div class="d-flex flex-column py-3 pe-3">
+                        <p class="mb-0 text-primary"><?= esc_html($nome); ?></p>
+                        <?php if ($ocupacao) : ?>
+                          <p class="mb-0 text-primary"><?= esc_html($ocupacao); ?></p>
+                        <?php endif; ?>
+                      </div>
+                    </div>
+                    <?php if ($video) : ?>
+                      <div class="video">
+                        <a href="<?= esc_url($video); ?>" data-fancybox>
+                          <img src="<?= esc_url(get_template_directory_uri() . '/assets/imgs/play.svg'); ?>" alt="Play">
+                        </a>
+                      </div>
+                    <?php endif; ?>
+                  </div>
+                </div>
+              </div>
+            <?php endwhile; ?>
+          <?php endif; ?>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+
+  </div>
+
   <div class="blog">
     <div class="container-xxl py-5">
       <div class="title mb-5 text-primary">
@@ -160,7 +257,61 @@ $blog_cta = get_field('blog_cta');
 
   <div class="orcamento">
     <div class="container-xxl pb-5">
-      
+      <div class="wrapper">
+        <div class="text__wrapper">
+          <div class="text">
+            <h2 class="mb-4 fw-medium">
+              <?= $orcamento_titulo ?>
+            </h2>
+            <p class="pb-4 fw-light">
+              <?= $orcamento_texto ?>
+            </p>
+            <a href="<?= get_home_url() . '/orcamento/' ?>" class="cta">
+              <?= $orcamento_cta ?>
+            </a>
+          </div>
+        </div>
+        <div class="img__wrapper">
+          <picture class="img-full">
+            <source
+              srcset="<?= $orcamento_img_mob ?>"
+              media="(max-width: 991px)" />
+            <img
+              src="<?= $orcamento_img ?>"
+              class="img-full"
+              alt="Faça agora o seu orçamento" />
+          </picture>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="atendimento">
+    <div class="wrapper">
+      <div class="img__wrapper">
+        <picture class="img-full">
+          <source
+            srcset="<?= $atendimento_img_mob ?>"
+            media="(max-width: 991px)" />
+          <img
+            src="<?= $atendimento_img ?>"
+            class="img-full"
+            alt="Fale com a nossa central de atendimento" />
+        </picture>
+      </div>
+      <div class="text__wrapper">
+        <div class="text">
+          <h2 class="mb-4 fw-medium">
+            <?= $atendimento_titulo ?>
+          </h2>
+          <p class="pb-4 fw-light">
+            <?= $atendimento_texto ?>
+          </p>
+          <a href="<?= get_home_url() . '/central-de-atendimento/' ?>" class="cta">
+            <?= $atendimento_cta ?>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>
