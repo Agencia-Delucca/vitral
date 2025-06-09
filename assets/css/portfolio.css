@@ -68,4 +68,7 @@
   #portfolio .grid {
     grid-template-columns: 1fr;
   }
+  #portfolio .grid .item .infos__wrapper {
+    padding: 16px;
+  }
 }

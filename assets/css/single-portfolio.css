@@ -70,10 +70,23 @@
 #single .text__wrapper h4,
 #single .text__wrapper h5,
 #single .text__wrapper h6 {
-  font-weight: 500;
+  font-weight: 700;
   color: var(--clr-primary);
   margin-bottom: 1rem;
 }
 #single .text__wrapper p:last-of-type {
   margin-bottom: 0;
+}
+@media (max-width: 1024px) {
+  #single .galeria {
+    position: relative;
+    margin-bottom: 24px;
+    gap: 8px;
+  }
+  #single .topo__wrapper {
+    padding: 16px;
+  }
+  #single .text__wrapper {
+    padding: 24px 0 0;
+  }
 }

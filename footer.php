@@ -1,7 +1,7 @@
 <footer id="footer">
   <div class="links py-5">
     <div class="container-xxl">
-      <div class="row gap-3">
+      <div class="row row-cols-md-2 row-cols-lg-4">
         <div class="col item">
           <a href="<?php echo home_url(); ?>">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo-vitral.svg" alt="Logo Vitral" class="img-fluid" title="Ir para a página inicial">

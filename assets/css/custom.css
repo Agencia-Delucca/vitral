@@ -91,6 +91,9 @@ h6 {
   padding-right: 32px;
 }
 @media (max-width: 991px) {
+  body {
+    padding-top: 72px;
+  }
   .container-xxl {
     max-width: 100% !important;
     padding-left: 16px;
@@ -218,14 +221,20 @@ body.loaded #site-loader {
   font-weight: 500;
 }
 /* NAVBAR MOBILE */
+.navbar__mobile .navbar-brand {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-right: 0;
+}
 .navbar__mobile .navbar-brand img {
-  max-height: 40px;
+  max-height: 32px;
 }
 .navbar__mobile .offcanvas-toggle {
   background: transparent;
 }
 .navbar__mobile .offcanvas-toggle img {
-  width: 48px;
+  width: 40px;
 }
 .navbar__mobile .offcanvas {
   background-color: #fff;
@@ -361,10 +370,17 @@ body.loaded #site-loader {
   }
   .copyright .container-xxl {
     flex-direction: column;
-    gap: 8px;
+    padding: 0;
   }
   .copyright .copy {
+    padding: 16px;
     max-width: 100%;
+  }
+  .copyright .copy-delucca {
+    width: 100% !important;
+    padding: 16px;
+    text-align: center;
+    border-top: 1px solid #fff;
   }
 }
 /* BLOCAGEM TEXTO IMAGEM */

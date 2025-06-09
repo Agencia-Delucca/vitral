@@ -32,15 +32,15 @@
     </div>
 
     <div class="navbar__mobile container-xxl p-3 d-lg-none" data-bs-theme="light">
-      <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">
-        <!-- <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/" alt="Logo" class="img-fluid d-lg-none"> -->
-      </a>
-
       <button type="button" class="offcanvas-toggle" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/menu-icon.svg" alt="Ícone de menu">
       </button>
 
-      <div class="offcanvas offcanvas-end d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <a class="navbar-brand" href="<?php echo esc_url(home_url('/')); ?>">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo-vitral-33-anos-horizontal.svg" alt="Logo" class="img-fluid d-lg-none">
+      </a>
+
+      <div class="offcanvas offcanvas-start d-lg-none" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
         <div class="offcanvas-header">
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>

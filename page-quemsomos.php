@@ -6,6 +6,7 @@ if (function_exists('enqueue_quem_somos_css')) {
 }
 
 $bloco1_imagem = get_field('bloco1_imagem');
+$bloco1_imagem_m = get_field('bloco1_imagem_m');
 $bloco1_titulo = get_field('bloco1_titulo');
 $bloco1_subtitulo = get_field('bloco1_subtitulo');
 $bloco1_texto = get_field('bloco1_texto');
@@ -40,8 +41,17 @@ $equipe_ceo_imagem = get_field('equipe_ceo_imagem');
 
 <style>
   <?php if ($bloco1_imagem): ?>
-    #quemSomos .bloco-1 {
-      background-image: url('<?php echo $bloco1_imagem; ?>');
+    @media (min-width: 1024px) {
+      #quemSomos .bloco-1 {
+        background-image: url('<?php echo $bloco1_imagem; ?>');
+      }
+    }
+  <?php endif; ?>
+  <?php if ($bloco1_imagem_m): ?>
+    @media (max-width: 1023px) {
+      #quemSomos .bloco-1 {
+        background-image: url('<?php echo $bloco1_imagem_m; ?>');
+      }
     }
   <?php endif; ?>
 </style>
@@ -74,8 +84,8 @@ $equipe_ceo_imagem = get_field('equipe_ceo_imagem');
     </div>
   </div>
 
-  <div class="bloco-2 bg-primary p-5">
-    <div class="container-xxl text-white px-5 text-center">
+  <div class="bloco-2 bg-primary pb-5 pb-lg-5 p-lg-5">
+    <div class="container-xxl text-white px-lg-5 text-center">
       <?= $bloco2_texto; ?>
     </div>
   </div>
@@ -83,7 +93,7 @@ $equipe_ceo_imagem = get_field('equipe_ceo_imagem');
   <div class="bloco-3">
     <div class="container-xxl">
       <div class="title pt-5 mt-3">
-        <h2 class="text-primary mb-0">
+        <h2 class="text-primary mb-3 mb-lg-0">
           <?= $bloco3_titulo; ?>
         </h2>
         <h3 class="text-primary mb-0">
@@ -150,10 +160,10 @@ $equipe_ceo_imagem = get_field('equipe_ceo_imagem');
         <h2 class="text-primary mb-0">
           <?= $bloco4_titulo; ?>
         </h2>
-        <p class="text-gray mt-3 mb-5 px-5">
+        <p class="text-gray mt-3 mb-5 px-lg-5">
           <?= $bloco4_texto; ?>
         </p>
-        <img src="<?= $bloco4_imagem; ?>" alt="<?= $bloco4_titulo; ?>" class="img-fluid rounded-3 mt-3">
+        <img src="<?= $bloco4_imagem; ?>" alt="<?= $bloco4_titulo; ?>" class="img-fluid rounded-3 w-100">
       </div>
       <div class="equipe py-5 px-5">
         <div class="grid">
