@@ -89,11 +89,41 @@ function carregar_css_homepage()
 
     $inline_home_script = '
       const swiperReviews = new Swiper("#home .depoimentos__slide", {
-        slidesPerView: 4,
         spaceBetween: 16,
+        breakpoints: {
+          1200: {
+            slidesPerView: 4,
+          },
+          992: {
+            slidesPerView: 3,
+          },
+          0: {
+            slidesPerView: 1,
+          },
+        },
         pagination: {
           el: "#home .depoimentos__slide .swiper-pagination",
           clickable: true,
+          dynamicBullets: true,
+          dynamicMainBullets: 4,
+        },
+      });
+
+      const swiperProdutos = new Swiper("#home .produtos__slide", {
+        spaceBetween: 16,
+        breakpoints: {
+          768: {
+            slidesPerView: 1.5,
+          },
+          0: {
+            slidesPerView: 1.1,
+          }
+        },
+        pagination: {
+          el: "#home .produtos .swiper-pagination",
+          clickable: true,
+          dynamicBullets: true,
+          dynamicMainBullets: 4,
         },
       });
     ';
@@ -213,14 +243,18 @@ function enqueue_single_produtos_css()
           pauseOnMouseEnter: true,
         },
         pagination: {
-          el: ".galeria .swiper-pagination",
+          el: "#single .galeria .swiper-pagination",
           clickable: true,
+          dynamicBullets: true,
+          dynamicMainBullets: 4,
         },
       });
 
-      const swiper = new Swiper("#single .cores__slide", {
-        slidesPerView: 6,
+      const swiper = new Swiper("#single .cores .slide", {
         breakpoints: {
+          1500: {
+            slidesPerView: 7,
+          },
           1200: {
             slidesPerView: 6,
           },
@@ -235,10 +269,12 @@ function enqueue_single_produtos_css()
           },
         },
         freeMode: true,
-        spaceBetween: 16,
+        spaceBetween: 0,
         pagination: {
-          el: ".cores__slide .swiper-pagination",
+          el: "#single .cores .slide .swiper-pagination",
           clickable: true,
+          dynamicBullets: true,
+          dynamicMainBullets: 4,
         },
       });
     ';
@@ -293,6 +329,8 @@ function carregar_scripts_fullbanner()
             pagination: {
               el: ".fullbanner .swiper-pagination",
               clickable: true,
+              dynamicBullets: true,
+              dynamicMainBullets: 4,
             },
           });
       ');

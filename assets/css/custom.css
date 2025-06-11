@@ -67,7 +67,7 @@ h6 {
 }
 body {
   font-family: "Inter", sans-serif;
-  padding-top: 76px;
+  padding-top: 72px;
 }
 h1,
 h2,
@@ -170,6 +170,19 @@ body.loaded #site-loader {
 #breadcrumb .breadcrumb-item.active {
   color: #fff;
 }
+@media (max-width: 991px) {
+  #breadcrumb .breadcrumb {
+    flex-wrap: nowrap;
+    text-wrap: nowrap;
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  #breadcrumb .breadcrumb-item {
+    display: flex;
+  }
+}
 /* NAVBAR */
 .navbar {
   position: fixed;
@@ -177,6 +190,7 @@ body.loaded #site-loader {
   z-index: 999;
   top: 0;
   padding: 0;
+  min-height: 72px;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.15);
   background-color: #fff;
   transition: all 0.3s ease;

@@ -99,4 +99,7 @@
   #single__newsletter {
     order: 3;
   }
+  #single .post-content {
+    margin-bottom: 48px;
+  }
 }

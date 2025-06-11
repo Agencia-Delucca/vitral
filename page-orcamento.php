@@ -20,7 +20,7 @@
       <picture>
         <source
           srcset="<?= $banner_m; ?>"
-          media="(max-width: 1023px)"
+          media="(max-width: 767px)"
         />
         <img
           src="<?= $banner; ?>"

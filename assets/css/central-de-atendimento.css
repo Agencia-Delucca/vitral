@@ -131,3 +131,17 @@
 #atendimento .grid .item-2 .sociais__redes a {
   text-decoration: none;
 }
+@media (max-width: 1024px) {
+  #atendimento .grid {
+    grid-template-columns: 1fr;
+  }
+  #atendimento .item-1 .submit__wrapper {
+    position: unset;
+  }
+  #atendimento .grid .item-2 {
+    padding: 16px;
+  }
+  #atendimento .mailto {
+    word-break: break-all;
+  }
+}

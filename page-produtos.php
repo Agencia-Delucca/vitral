@@ -33,6 +33,8 @@ $inovacao_link = get_field('inovacao_link');
         'post_type' => 'produto',
         'post_status' => 'publish',
         'posts_per_page' => -1,
+        'order' => 'ASC',
+        'orderby' => 'title'
       ));
 
       if ($query->have_posts()) :

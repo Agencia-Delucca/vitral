@@ -16,7 +16,7 @@
             }
             echo '<li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
           } elseif (is_singular('post')) {
-            echo '<li class="breadcrumb-item"><a href="/blog">' . 'Blog' . '</a></li> . <li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
+            echo '<li class="breadcrumb-item"><a href="/blog">' . 'Blog' . '</a></li> <li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';
           } elseif (is_singular('portfolio')) {
             echo '<li class="breadcrumb-item"><a href="' . home_url('/portfolio') . '">Portfólio</a></li>';
             echo '<li class="breadcrumb-item active" aria-current="page">' . get_the_title() . '</li>';

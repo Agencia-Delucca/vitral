@@ -78,3 +78,16 @@
 #sidebar .side-banner a:hover > img {
   transform: scale(1.05);
 }
+@media (max-width: 1024px) {
+  #sidebar .categories {
+    order: 2;
+  }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+  #sidebar {
+    flex-direction: row;
+  }
+  #sidebar .side-banner {
+    width: 60%;
+  }
+}

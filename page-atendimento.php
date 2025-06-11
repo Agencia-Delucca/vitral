@@ -7,6 +7,7 @@ if ( function_exists('enqueue_central_de_atendimento_css') ) {
 }
 
 $topo_imagem = get_field('topo_imagem');
+$topo_imagem_m = get_field('topo_imagem_m');
 $topo_titulo = get_field('topo_titulo');
 $topo_subtitulo = get_field('topo_subtitulo');
 $topo_texto = get_field('topo_texto');
@@ -14,22 +15,31 @@ $topo_texto = get_field('topo_texto');
 $forms = do_shortcode('[contact-form-7 id="0b7f2d2" title="Form - Central de Atendimento"]');
 
 $bottom_imagem = get_field('bottom_imagem');
+$bottom_imagem_m = get_field('bottom_imagem_m');
 ?>
 
 <style>
   <?php if ($topo_imagem): ?>
-    #atendimento > .wrapper {
-      background-image: url('<?php echo $topo_imagem; ?>');
-      background-size: contain;
-      background-position: top center;
-      background-repeat: no-repeat;
+    @media (min-width: 992px) {      
+      #atendimento > .wrapper {
+        background-image: url('<?php echo $topo_imagem; ?>');
+        background-size: contain;
+        background-position: top center;
+        background-repeat: no-repeat;
+      }
     }
   <?php endif; ?>
 </style>
 
 <div id="atendimento">
-  <div class="wrapper py-5">
-    <div class="topo container-xxl text-primary">
+  <div class="wrapper pt-lg-5 pb-0 pb-lg-5">
+    <?php if ($topo_imagem_m): ?>
+      <img src="<?php echo $topo_imagem_m; ?>" alt="" class="w-100 d-block d-md-none">
+    <?php endif; ?>
+    <?php if ($topo_imagem): ?>
+      <img src="<?php echo $topo_imagem; ?>" alt="" class="w-100 d-none d-md-block d-lg-none">
+    <?php endif; ?>
+    <div class="topo container-xxl text-primary pt-5 pt-lg-0">
       <h1 class="mb-0">
         <?= $topo_titulo; ?>
       </h1>
@@ -41,7 +51,7 @@ $bottom_imagem = get_field('bottom_imagem');
       </p>
     </div>
     
-    <div class="grid container-xxl py-5 mb-5">
+    <div class="grid container-xxl py-5 mb-0 mb-lg-5">
       <div class="item item-1">
         <?= $forms; ?>
       </div>
@@ -65,8 +75,8 @@ $bottom_imagem = get_field('bottom_imagem');
             <p class="canais__wrapper mb-0">
               <a href="mailto:vendas@vitralaluminioevidro.com.br" target="_blank" rel="noopener noreferrer" class="canais__wrapper">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/mailto-white-icon.svg" alt="Logo de email" class="img-fluid">
-                <span>
-                  <b>E-mail:</b> vendas@vitralaluminioevidro.com.br
+                <span class="mailto">
+                  <b>E-mail:</b> <br class="d-lg-none"> vendas@vitralaluminioevidro.com.br
                 </span>
               </a>
             </p>
@@ -106,8 +116,13 @@ $bottom_imagem = get_field('bottom_imagem');
     </div>
   </div>
 
-  <div class="bottom mt-5 pt-5">
-    <img src="<?= $bottom_imagem; ?>" alt="<?= $topo_titulo ?>" class="w-100">
+  <div class="bottom mt-0 mt-lg-5 pt-0 pt-lg-5">
+    <?php if ($bottom_imagem): ?>
+      <img src="<?= $bottom_imagem ?>" alt="<?= $topo_titulo ?>" class="w-100 d-none d-lg-block">
+    <?php endif; ?>
+    <?php if ($bottom_imagem_m): ?>
+      <img src="<?= $bottom_imagem_m ?>" alt="<?= $topo_titulo ?>" class="w-100 d-block d-lg-none">
+    <?php endif; ?>
   </div>
 </div>
 

@@ -214,3 +214,27 @@
   text-decoration: none;
   color: #585858;
 }
+@media (max-width: 991px) {
+  #blog {
+    background: linear-gradient(180deg, #5B9BCB 0%, #5B9BCB 30%, #EEE 30%, #EEE 100%);
+  }
+  #blog .topo {
+    background: unset;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  #blog .topo .header h1 {
+    font-size: 40px !important;
+  }
+  #blog .more-posts .grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  #blog .more-posts .grid a {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    border-radius: 16px;
+    aspect-ratio: 1;
+  }
+}

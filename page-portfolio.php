@@ -1,10 +1,12 @@
-<?php 
+<?php
 get_header();
 // Template Name: Portfolio
 
 if (function_exists('enqueue_css_portfolio')) {
   enqueue_css_portfolio();
 }
+
+$loop = get_field('loop');
 ?>
 
 <div id="portfolio" class="py-5">
@@ -14,33 +16,27 @@ if (function_exists('enqueue_css_portfolio')) {
     </h1>
     <p class="mb-0 mt-3 text-primary">
       <?= get_the_excerpt(); ?>
-  </p>
+    </p>
   </div>
 
   <div class="grid container-xxl pb-5 mb-5">
-    <?php
-    $query = new WP_Query(array(
-      'post_type' => 'portfolio',
-      'post_status' => 'publish',
-      'posts_per_page' => -1,
-    ));
-
-    if ($query->have_posts()) :
-      while ($query->have_posts()) : $query->the_post(); ?>
-        <a href="<?php the_permalink(); ?>" class="item">
-          <div class="infos__wrapper">
-            <h2 class="mb-0"><?php the_title(); ?></h2>
-            <?php the_excerpt(); ?>
-            <p>Saiba mais</p>
-          </div>
-          <div class="img__wrapper">
-            <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>">
-          </div>
-        </a>
-      <?php endwhile; ?>
-    <?php else : ?>
-      <p>Nenhum projeto encontrado.</p>
-    <?php endif; ?>
+    <?php foreach ($loop as $item):
+      $permalink = get_permalink($item->ID);
+      $title = get_the_title($item->ID);
+      $excerpt = get_the_excerpt($item->ID);
+      $thumbnail = get_the_post_thumbnail_url($item->ID, 'large');
+    ?>
+      <a href="<?php echo esc_url($permalink); ?>" class="item">
+        <div class="infos__wrapper">
+          <h2 class="mb-0"><?php echo esc_html($title); ?></h2>
+          <p><?php echo esc_html($excerpt); ?></p>
+          <p>Saiba mais</p>
+        </div>
+        <div class="img__wrapper">
+          <img src="<?php echo esc_url($thumbnail); ?>" alt="<?php echo esc_attr($title); ?>">
+        </div>
+      </a>
+    <?php endforeach; ?>
   </div>
 </div>
 

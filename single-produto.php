@@ -16,9 +16,9 @@ $linhafina_1 = get_field('linhafina_1');
 $linhafina_2 = get_field('linhafina_2');
 $linhafina_3 = get_field('linhafina_3');
 $linhafina_4 = get_field('linhafina_4');
-$linhafina_5 = get_field('linhafina_5'); 
+$linhafina_5 = get_field('linhafina_5');
 
-$cor = get_field('cor');
+$loop = get_field('loop');
 
 $comparativo = get_field('comparativo');
 $comparativo_titulo = get_field('comparativo_titulo');
@@ -108,40 +108,61 @@ $comparativo_titulo = get_field('comparativo_titulo');
           </p>
         </div>
       </div>
+
+      <div class="linhafina mobile">
+        <div class="item titulo">
+          <h3 class="text-primary mb-0">
+            <?= $linhafina_1; ?>
+          </h3>
+        </div>
+        <div class="item__wrapper">
+          <div class="item">
+            <p class="mb-0">
+              <?= $linhafina_2; ?>
+            </p>
+          </div>
+          <div class="item">
+            <p class="mb-0">
+              <?= $linhafina_3; ?>
+            </p>
+          </div>
+          <div class="item">
+            <p class="mb-0">
+              <?= $linhafina_4; ?>
+            </p>
+          </div>
+          <div class="item">
+            <p class="mb-0">
+              <?= $linhafina_5; ?>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   <?php endif; ?>
 
-  <?php if ($cor) : ?>
-    <div class="container-xxl cores py-5 mb-5">
-      <h2 class="text-primary mb-3">
-        Cores
-      </h2>
-      <div class="cores__slide">
-        <div class="swiper-wrapper mb-5">
-          <?php if (have_rows('cor')) : ?>
-            <?php while (have_rows('cor')) : the_row(); ?>
-              <div class="swiper-slide item">
-                <div
-                  class="img__wrapper">
-                  <div
-                    class="img"
-                    <?php if (get_sub_field('imagem')) : ?>
-                    style="background-image: url('<?= esc_url(get_sub_field('imagem')); ?>')"
-                    <?php else: ?>
-                    style="background-color: <?= esc_attr(get_sub_field('code')); ?>;"
-                    <?php endif; ?>>
-                  </div>
-                </div>
-                <div class="text__wrapper">
-                  <p class="text-white mb-0">
-                    <?= get_sub_field('nome'); ?>
-                  </p>
-                </div>
+  <?php if ($loop) : ?>
+    <div class="cores pt-5">
+      <div class="container-xxl">
+        <?php if (have_rows('loop')): ?>
+          <?php while (have_rows('loop')): the_row(); ?>
+            <?php
+            $slide = get_sub_field('slide');
+            $titulo = $slide['titulo'];
+            $cores = $slide['cores'];
+            ?>
+            <div class="slide">
+              <h2 class="mb-3 text-primary"><?php echo esc_html($titulo); ?></h2>
+
+              <div class="swiper-wrapper mb-5 pb-5">
+                <?php foreach ($cores as $cor): ?>
+                  <img src="<?php echo esc_url($cor['img']); ?>" alt="<?php echo esc_attr($cor['name']); ?>" class="swiper-slide">
+                <?php endforeach; ?>
               </div>
-            <?php endwhile; ?>
-          <?php endif; ?>
-        </div>
-        <div class="swiper-pagination"></div>
+              <div class="swiper-pagination"></div>
+            </div>
+          <?php endwhile; ?>
+        <?php endif; ?>
       </div>
     </div>
   <?php endif; ?>
@@ -152,16 +173,34 @@ $comparativo_titulo = get_field('comparativo_titulo');
         <?= $comparativo_titulo; ?>
       </h2>
       <div class="tabela">
+        <?php if (have_rows('comparativo_segmentos')) : ?>
+          <div class="container__segmentos">
+            <?php while (have_rows('comparativo_segmentos')) : the_row(); ?>
+              <div class="segmento">
+                <?php if (have_rows('coluna')) : ?>
+                  <?php while (have_rows('coluna')) : the_row(); ?>
+                    <p>
+                      <?= get_sub_field('item'); ?>
+                    </p>
+                  <?php endwhile; ?>
+                <?php endif; ?>
+              </div>
+            <?php endwhile; ?>
+          </div>
+        <?php endif; ?>
+
         <?php if (have_rows('comparativo_linha')) : ?>
-          <?php while (have_rows('comparativo_linha')) : the_row(); ?>
-            <div class="linha">
-              <?php if (have_rows('coluna')) : ?>
-                <?php while (have_rows('coluna')) : the_row(); ?>
-                  <p><?= get_sub_field('item'); ?></p>
-                <?php endwhile; ?>
-              <?php endif; ?>
-            </div>
-          <?php endwhile; ?>
+          <div class="container__linha">
+            <?php while (have_rows('comparativo_linha')) : the_row(); ?>
+              <div class="linha">
+                <?php if (have_rows('coluna')) : ?>
+                  <?php while (have_rows('coluna')) : the_row(); ?>
+                    <p><?= get_sub_field('item'); ?></p>
+                  <?php endwhile; ?>
+                <?php endif; ?>
+              </div>
+            <?php endwhile; ?>
+          </div>
         <?php endif; ?>
       </div>
     </div>

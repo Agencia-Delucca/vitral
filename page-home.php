@@ -24,12 +24,19 @@ $redes_yt = get_field('redes_yt');
 // PORTFOLIO
 $portfolio_titulo = get_field('portfolio_titulo');
 $portfolio_subtitulo = get_field('portfolio_subtitulo');
+$portfolio_loop = get_field('portfolio_loop');
 $portfolio_cta = get_field('portfolio_cta');
 
 // DEPOIMENTOS
 $depoimentos_titulo = get_field('depoimentos_topo_titulo');
 $depoimentos_img = get_field('depoimentos_topo_imagem');
 $depoimentos_img_m  = get_field('depoimentos_topo_imagem_m');
+
+// PRODUTOS
+$produtos_titulo = get_field('produtos_titulo');
+$produtos_subtitulo = get_field('produtos_subtitulo');
+$produtos_loop = get_field('produtos_loop');
+$produtos_cta = get_field('produtos_cta');
 
 // BLOG
 $blog_titulo = get_field('blog_titulo');
@@ -53,16 +60,8 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
 ?>
 
 <style>
-  <?php if ($depoimentos_img): ?>@media (min-width: 992px) {
-    #home .depoimentos .title {
-      background: center / cover no-repeat url('<?php echo $depoimentos_img; ?>');
-    }
-  }
-
-  <?php endif; ?><?php if ($depoimentos_img_m): ?>@media (max-width: 991px) {
-    #home .depoimentos .title {
-      background: center / cover no-repeat url('<?php echo $depoimentos_img_m; ?>');
-    }
+  <?php if ($depoimentos_img): ?>#home .depoimentos .title {
+    background: center / cover no-repeat url('<?php echo $depoimentos_img; ?>');
   }
 
   <?php endif; ?>
@@ -84,7 +83,7 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
           </a>
         <?php endif; ?>
       </div>
-      <div class="redes__wrapper">
+      <div class="redes__wrapper d-none d-lg-flex">
         <?php if ($redes_insta) : ?>
           <a target="_blank" href="<?= $redes_insta ?>">
             <img src="<?= get_template_directory_uri() . '/assets/imgs/instagram-topo-icon.svg' ?>">
@@ -119,30 +118,23 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
         <p class="mb-0"><?= $portfolio_subtitulo ?></p>
       </div>
       <div class="grid mb-5">
-        <?php
-        $query = new WP_Query(array(
-          'post_type' => 'portfolio',
-          'post_status' => 'publish',
-          'posts_per_page' => 3,
-        ));
-
-        if ($query->have_posts()) :
-          while ($query->have_posts()) : $query->the_post(); ?>
-            <a href="<?php the_permalink(); ?>" class="item">
-              <div class="infos__wrapper">
-                <h2 class="mb-0"><?php the_title(); ?></h2>
-                <?php the_excerpt(); ?>
-                <p>Saiba mais</p>
-              </div>
-              <div class="img__wrapper">
-                <img src="<?php the_post_thumbnail_url('large'); ?>" alt="<?php the_title(); ?>">
-              </div>
-            </a>
-          <?php endwhile; ?>
-        <?php else : ?>
-          <p>Nenhum projeto encontrado.</p>
-        <?php endif; ?>
-        <?php wp_reset_query(); ?>
+        <?php foreach ($portfolio_loop as $portfolio):
+          $permalink = get_permalink($portfolio->ID);
+          $title = get_the_title($portfolio->ID);
+          $excerpt = get_the_excerpt($portfolio->ID);
+          $thumbnail = get_the_post_thumbnail_url($portfolio->ID, 'large');
+        ?>
+          <a href="<?php echo esc_url($permalink); ?>" class="item">
+            <div class="infos__wrapper">
+              <h2 class="mb-0"><?php echo esc_html($title); ?></h2>
+              <p><?php echo esc_html($excerpt); ?></p>
+              <p>Saiba mais</p>
+            </div>
+            <div class="img__wrapper">
+              <img src="<?php echo esc_url($thumbnail); ?>" alt="<?php echo esc_attr($title); ?>">
+            </div>
+          </a>
+        <?php endforeach; ?>
       </div>
       <div class="cta__wrapper">
         <a href="<?= get_home_url() . '/portfolio/' ?>" class="cta">
@@ -153,7 +145,7 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
   </div>
 
   <div class="depoimentos pb-5">
-    <div class="title pt-5">
+    <div class="title pt-3 pt-lg-5">
       <div class="container-xxl">
         <h2 class="mb-0 text-primary">
           <?= $depoimentos_titulo ?>
@@ -209,6 +201,54 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
 
   </div>
 
+  <?php if ($produtos_loop): ?>
+    <div class="produtos py-5">
+      <div class="title text-center">
+        <h2 class="mb-0 text-primary mb-3">
+          <?= $produtos_titulo ?>
+        </h2>
+        <p class="mb-0 text-primary">
+          <?= $produtos_subtitulo ?>
+        </p>
+      </div>
+      <div class="container-xxl">
+        <div class="produtos__slide">
+          <div class="swiper-wrapper py-5">
+            <?php foreach ($produtos_loop as $produtos):
+              $permalink = get_permalink($produtos->ID);
+              $title = get_the_title($produtos->ID);
+              $excerpt = get_the_excerpt($produtos->ID);
+              $thumbnail = get_field('thumbnail_home', $produtos->ID);
+            ?>
+              <div class="swiper-slide">
+                <a href="<?php echo $permalink; ?>" class="item">
+                  <div class="infos__wrapper">
+                    <h2 class="mb-0 fw-semibold">
+                      <?php echo $title; ?>
+                    </h2>
+                    <p class="mb-0">
+                      <?php echo $excerpt; ?>
+                    </p>
+                    <p class="mb-0 saiba__mais">Saiba mais</p>
+                  </div>
+                  <div class="img__wrapper">
+                    <img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>">
+                  </div>
+                </a>
+              </div>
+            <?php endforeach; ?>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="cta__wrapper mt-5">
+        <a href="<?= get_home_url() . '/produtos/' ?>" class="cta">
+          <?= $produtos_cta ?>
+        </a>
+      </div>
+    </div>
+  <?php endif; ?>
+
   <div class="blog">
     <div class="container-xxl py-5">
       <div class="title mb-5 text-primary">
@@ -263,7 +303,7 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
             <h2 class="mb-4 fw-medium">
               <?= $orcamento_titulo ?>
             </h2>
-            <p class="pb-4 fw-light">
+            <p class="p=mb-4 fw-light">
               <?= $orcamento_texto ?>
             </p>
             <a href="<?= get_home_url() . '/orcamento/' ?>" class="cta">
@@ -304,7 +344,7 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
           <h2 class="mb-4 fw-medium">
             <?= $atendimento_titulo ?>
           </h2>
-          <p class="pb-4 fw-light">
+          <p class="mb-4 fw-light">
             <?= $atendimento_texto ?>
           </p>
           <a href="<?= get_home_url() . '/central-de-atendimento/' ?>" class="cta">

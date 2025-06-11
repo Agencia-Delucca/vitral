@@ -25,7 +25,7 @@
           'theme_location' => 'menu-principal',
           'menu_class'     => 'header-menu text-uppercase',
           'container'      => 'div',
-          'container_class' => 'header-nav col-8',
+          'container_class' => 'header-nav w-100',
         ));
         ?>
       </div>
