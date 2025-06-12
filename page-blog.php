@@ -46,90 +46,13 @@ $post_6_link = get_field('post_6_link');
       </div>
     </div>
 
-    <!-- <div class="primary-posts container-xxl pt-5 mt-3">
-      <div class="grid">
-        <div class="item">
-          <a href="<?= $post_1_link; ?>">
-            <div class="img__wrapper">
-              <img src="<?= $post_1_img; ?>" alt="<?= $post_1_titulo; ?>">
-            </div>
-            <div class="text__wrapper">
-              <p>
-                <?= $post_1_titulo; ?>
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="<?= $post_2_link; ?>">
-            <div class="img__wrapper">
-              <img src="<?= $post_2_img; ?>" alt="<?= $post_2_titulo; ?>">
-            </div>
-            <div class="text__wrapper">
-              <p>
-                <?= $post_2_titulo; ?>
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="<?= $post_3_link; ?>">
-            <div class="img__wrapper">
-              <img src="<?= $post_3_img; ?>" alt="<?= $post_3_titulo; ?>">
-            </div>
-            <div class="text__wrapper">
-              <p>
-                <?= $post_3_titulo; ?>
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="<?= $post_4_link; ?>">
-            <div class="img__wrapper">
-              <img src="<?= $post_4_img; ?>" alt="<?= $post_4_titulo; ?>">
-            </div>
-            <div class="text__wrapper">
-              <p>
-                <?= $post_4_titulo; ?>
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="<?= $post_5_link; ?>">
-            <div class="img__wrapper">
-              <img src="<?= $post_5_img; ?>" alt="<?= $post_5_titulo; ?>">
-            </div>
-            <div class="text__wrapper">
-              <p>
-                <?= $post_5_titulo; ?>
-              </p>
-            </div>
-          </a>
-        </div>
-        <div class="item">
-          <a href="<?= $post_6_link; ?>">
-            <div class="img__wrapper">
-              <img src="<?= $post_6_img; ?>" alt="<?= $post_6_titulo; ?>">
-            </div>
-            <div class="text__wrapper">
-              <p>
-                <?= $post_6_titulo; ?>
-              </p>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div> -->
-
     <div class="main-posts container-xxl pt-5 d-none d-lg-block">
       <div class="grid">
         <?php
         $latest_post = new WP_Query(array(
           'post_type' => 'post',
           'post_status' => 'publish',
-          'posts_per_page' => 4,
+          'posts_per_page' => 3,
         ));
 
         $exclude_ids = wp_list_pluck($latest_post->posts, 'ID');
@@ -138,8 +61,7 @@ $post_6_link = get_field('post_6_link');
           while ($latest_post->have_posts()) : $latest_post->the_post(); ?>
             <a href="<?php the_permalink(); ?>">
               <div class="infos__wrapper">
-                <h2 class="mb-0 fw-normal"><?= the_title(); ?></h2>
-                <?= get_the_date(); ?>
+                <h2 class="mb-0 fw-normal"><?= wp_html_excerpt(get_the_title(), 64, '...'); ?></h2>
                 <p class="mb-0">
                   Ler mais
                 </p>
@@ -179,8 +101,7 @@ $post_6_link = get_field('post_6_link');
             while ($query->have_posts()) : $query->the_post(); ?>
               <a href="<?php the_permalink(); ?>">
                 <div class="infos__wrapper">
-                  <h2 class="mb-3 fw-normal"><?= the_title(); ?></h2>
-                  <?= get_the_date(); ?>
+                  <h2 class="mb-3 fw-normal"><?= wp_html_excerpt(get_the_title(), 48, '...'); ?></h2>
                   <p class="mb-0">
                     Ler mais
                   </p>

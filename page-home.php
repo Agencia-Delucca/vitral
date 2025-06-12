@@ -7,7 +7,6 @@ if (function_exists('carregar_css_homepage')) {
 
 // TOPO
 $topo_video = get_field('topo_video');
-$topo_video_mob = get_field('topo_video_mob');
 $topo_titulo = get_field('topo_titulo');
 $topo_subtitulo = get_field('topo_subtitulo');
 $topo_cta_texto = get_field('topo_link[title]');
@@ -106,7 +105,7 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
         <?php endif; ?>
       </div>
     </div>
-    <video id="topoVideo" autoplay muted loop playsinline>
+    <video id="topoVideo" autoplay muted loop playsinline webkit-playsinline>
       <source src="<?= $topo_video ?>" type="video/mp4">
     </video>
   </div>
@@ -264,15 +263,14 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
         $latest_post = new WP_Query(array(
           'post_type' => 'post',
           'post_status' => 'publish',
-          'posts_per_page' => 4,
+          'posts_per_page' => 3,
         ));
 
         if ($latest_post->have_posts()) :
           while ($latest_post->have_posts()) : $latest_post->the_post(); ?>
             <a href="<?php the_permalink(); ?>">
               <div class="infos__wrapper">
-                <h2 class="mb-0 fw-normal"><?= the_title(); ?></h2>
-                <?= get_the_date(); ?>
+                <h2 class="mb-0 fw-normal"><?= wp_html_excerpt(get_the_title(), 64, '...'); ?></h2>
                 <p class="mb-0">
                   Ler mais
                 </p>
@@ -303,7 +301,7 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
             <h2 class="mb-4 fw-medium">
               <?= $orcamento_titulo ?>
             </h2>
-            <p class="p=mb-4 fw-light">
+            <p class="mb-4 fw-light">
               <?= $orcamento_texto ?>
             </p>
             <a href="<?= get_home_url() . '/orcamento/' ?>" class="cta">
@@ -357,15 +355,13 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
 </div>
 
 <script>
-  const video = document.getElementById('topoVideo');
-  const mobileVideo = '<?= $topo_video_mob ?>';
-  const desktopVideo = '<?= $topo_video ?>';
-
-  const isMobile = window.innerWidth <= 991;
-
-  const selectedSource = isMobile ? mobileVideo : desktopVideo;
-  video.querySelector('source').src = selectedSource;
-  video.load();
+  document.addEventListener('DOMContentLoaded', function () {
+    const video = document.getElementById('topoVideo');
+    video.muted = true;
+    video.play().catch(e => {
+      console.warn('Autoplay bloqueado:', e);
+    });
+  });
 </script>
 
 <?php get_footer(); ?>

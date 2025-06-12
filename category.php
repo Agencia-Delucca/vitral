@@ -30,8 +30,7 @@ if (function_exists('enqueue_blog_css')) {
             <?php while (have_posts()) : the_post(); ?>
               <a href="<?php the_permalink(); ?>">
                 <div class="infos__wrapper">
-                  <h2 class="mb-3 fw-normal"><?php the_title(); ?></h2>
-                  <?php the_date(); ?>
+                  <h2 class="mb-3 fw-normal"><?= wp_html_excerpt(get_the_title(), 48, '...'); ?></h2>
                   <p class="mb-0">Ler mais</p>
                 </div>
                 <div class="img__wrapper">

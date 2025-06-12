@@ -379,35 +379,44 @@ body {
 #home .produtos .cta__wrapper .cta:hover {
   background: #000;
 }
+@media (min-width: 1025px) {
+  #home .produtos .swiper-wrapper .item::after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.6) 40%, transparent 60%);
+    top: 0;
+    left: 0;
+  }
+}
 /* BLOG */
 #home .blog {
   background: linear-gradient(180deg, #D9D9D9 60%, #EEE 60%);
 }
 #home .blog .grid {
   display: grid;
-  grid-template-columns: repeat(9, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   width: 100%;
-  aspect-ratio: 5/2;
 }
 #home .blog .grid a:nth-child(1) { 
-  grid-area: 1 / 1 / 4 / 7;
-  border-radius: 12px 0 0 12px;
+  grid-area: 1 / 1 / 2 / 3;
+  border-radius: 12px 12px 0 0;
+  min-height: 600px;
 }
 #home .blog .grid a:nth-child(2) { 
-  grid-area: 1 / 7 / 2 / 10;
-  border-radius: 0 12px 0 0;
+  border-radius: 0 0 0 12px;
 }
 #home .blog .grid a:nth-child(3) { 
-  grid-area: 2 / 7 / 3 / 10; 
-}
-#home .blog .grid a:nth-child(4) { 
-  grid-area: 3 / 7 / 4 / 10; 
   border-radius: 0 0 12px 0;
 }
 #home .blog .grid a {
   position: relative;
   overflow: hidden;
   width: 100%;
+  display: flex;
+  align-items: end;
+  text-decoration: none;
 }
 #home .blog .grid a::before {
   content: "";
@@ -425,14 +434,12 @@ body {
   opacity: 0.8;
 }
 #home .blog .grid .infos__wrapper {
-  position: absolute;
   z-index: 2;
-  bottom: 32px;
-  left: 32px;
   display: flex;
   flex-direction: column;
   gap: 8px;
   color: #fff;
+  padding: 250px 32px 32px;
 }
 #home .blog .grid .img__wrapper {
   position: absolute;
@@ -622,6 +629,9 @@ body {
   #home .portfolio .grid {
     grid-template-columns: 1fr;
   }
+  #home .portfolio .grid .item .infos__wrapper {
+    padding: 16px;
+  }
   /* DEPOIMENTOS */
   #home .depoimentos .title {
     aspect-ratio: 400/600;
@@ -629,6 +639,9 @@ body {
   }
   #home .depoimentos .title h2 {
     font-size: 36px !important;
+  }
+  #home .depoimentos__slide .text__wrapper {
+    padding: 32px 16px;
   }
   .fancybox__viewport {
     height: 100dvh !important;
@@ -680,15 +693,25 @@ body {
     aspect-ratio: auto;
     gap: 16px;
   }
+  #home .blog .grid a:nth-child(1) { 
+    min-height: unset;
+  }
   #home .blog .grid a:nth-child(1),
   #home .blog .grid a:nth-child(2),
   #home .blog .grid a:nth-child(3),
   #home .blog .grid a:nth-child(4) {
     grid-area: auto;
-    aspect-ratio: 1;
+    aspect-ratio: auto;
     border-radius: 12px;
   }
+  #home .blog .grid .infos__wrapper {
+    padding: 250px 16px 16px;
+  }
   /* ORÇAMENTO E ATENDIMENTO */
+  #home .orcamento .text__wrapper,
+  #home .atendimento .text__wrapper {
+    padding: 32px 16px;
+  }
   #home .orcamento .text__wrapper,
   #home .orcamento .img__wrapper {
     border-radius: 0;
