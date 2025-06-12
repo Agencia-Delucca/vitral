@@ -189,22 +189,97 @@ $comparativo_titulo = get_field('comparativo_titulo');
           </div>
         <?php endif; ?>
 
-        <?php if (have_rows('comparativo_linha')) : ?>
-          <div class="container__linha">
-            <?php while (have_rows('comparativo_linha')) : the_row(); ?>
-              <div class="linha">
-                <?php if (have_rows('coluna')) : ?>
-                  <?php while (have_rows('coluna')) : the_row(); ?>
-                    <p><?= get_sub_field('item'); ?></p>
-                  <?php endwhile; ?>
-                <?php endif; ?>
-              </div>
-            <?php endwhile; ?>
-          </div>
-        <?php endif; ?>
+        <div class="wrapper__scroll">
+          <?php if (have_rows('comparativo_linha')) : ?>
+            <div class="container__linha">
+              <?php while (have_rows('comparativo_linha')) : the_row(); ?>
+                <div class="linha">
+                  <?php if (have_rows('coluna')) : ?>
+                    <?php while (have_rows('coluna')) : the_row(); ?>
+                      <p><?= get_sub_field('item'); ?></p>
+                    <?php endwhile; ?>
+                  <?php endif; ?>
+                </div>
+              <?php endwhile; ?>
+            </div>
+          <?php endif; ?>
+        </div>
       </div>
     </div>
   <?php endif; ?>
 </div>
+
+<script>
+  function igualarAlturasComparativo() {
+    const segmentos = document.querySelectorAll('.container__segmentos .segmento p');
+    const linhas = document.querySelectorAll('.container__linha .linha');
+
+    if (!segmentos.length || !linhas.length) return;
+
+    // Zera altura antes de calcular novamente
+    segmentos.forEach(p => p.style.height = 'auto');
+    linhas.forEach(linha => {
+      linha.querySelectorAll('p').forEach(p => p.style.height = 'auto');
+    });
+
+    // Para cada coluna, encontrar a maior altura
+    segmentos.forEach((segmentoP, index) => {
+      let maiorAltura = segmentoP.offsetHeight;
+
+      linhas.forEach(linha => {
+        const pLinha = linha.querySelectorAll('p')[index];
+        if (pLinha && pLinha.offsetHeight > maiorAltura) {
+          maiorAltura = pLinha.offsetHeight;
+        }
+      });
+
+      // Aplicar a mesma altura em todos os p dessa coluna
+      segmentoP.style.height = maiorAltura + 'px';
+      linhas.forEach(linha => {
+        const pLinha = linha.querySelectorAll('p')[index];
+        if (pLinha) {
+          pLinha.style.height = maiorAltura + 'px';
+        }
+      });
+    });
+  }
+
+  // Executa ao carregar e ao redimensionar
+  window.addEventListener('load', igualarAlturasComparativo);
+  window.addEventListener('resize', () => {
+    setTimeout(igualarAlturasComparativo, 100); // pequeno delay para garantir layout estável
+  });
+
+  const scrollContainer = document.querySelector('.wrapper__scroll');
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  scrollContainer.addEventListener('mousedown', (e) => {
+    isDown = true;
+    scrollContainer.classList.add('dragging');
+    startX = e.pageX - scrollContainer.offsetLeft;
+    scrollLeft = scrollContainer.scrollLeft;
+  });
+
+  scrollContainer.addEventListener('mouseleave', () => {
+    isDown = false;
+    scrollContainer.classList.remove('dragging');
+  });
+
+  scrollContainer.addEventListener('mouseup', () => {
+    isDown = false;
+    scrollContainer.classList.remove('dragging');
+  });
+
+  scrollContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - scrollContainer.offsetLeft;
+    const walk = (x - startX) * 1.5; // velocidade
+    scrollContainer.scrollLeft = scrollLeft - walk;
+  });
+</script>
 
 <?php get_footer(); ?>
