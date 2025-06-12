@@ -210,45 +210,33 @@ $comparativo_titulo = get_field('comparativo_titulo');
 </div>
 
 <script>
-  function igualarAlturasComparativo() {
-    const segmentos = document.querySelectorAll('.container__segmentos .segmento p');
-    const linhas = document.querySelectorAll('.container__linha .linha');
+function igualarAlturaTodosPs() {
+  const elementos = document.querySelectorAll('.tabela p');
+  if (!elementos.length) return;
 
-    if (!segmentos.length || !linhas.length) return;
+  // Zera altura antes
+  elementos.forEach(el => el.style.height = 'auto');
 
-    // Zera altura antes de calcular novamente
-    segmentos.forEach(p => p.style.height = 'auto');
-    linhas.forEach(linha => {
-      linha.querySelectorAll('p').forEach(p => p.style.height = 'auto');
-    });
-
-    // Para cada coluna, encontrar a maior altura
-    segmentos.forEach((segmentoP, index) => {
-      let maiorAltura = segmentoP.offsetHeight;
-
-      linhas.forEach(linha => {
-        const pLinha = linha.querySelectorAll('p')[index];
-        if (pLinha && pLinha.offsetHeight > maiorAltura) {
-          maiorAltura = pLinha.offsetHeight;
-        }
-      });
-
-      // Aplicar a mesma altura em todos os p dessa coluna
-      segmentoP.style.height = maiorAltura + 'px';
-      linhas.forEach(linha => {
-        const pLinha = linha.querySelectorAll('p')[index];
-        if (pLinha) {
-          pLinha.style.height = maiorAltura + 'px';
-        }
-      });
-    });
-  }
-
-  // Executa ao carregar e ao redimensionar
-  window.addEventListener('load', igualarAlturasComparativo);
-  window.addEventListener('resize', () => {
-    setTimeout(igualarAlturasComparativo, 100); // pequeno delay para garantir layout estável
+  // Acha a maior altura
+  let maiorAltura = 0;
+  elementos.forEach(el => {
+    if (el.offsetHeight > maiorAltura) {
+      maiorAltura = el.offsetHeight;
+    }
   });
+
+  // Aplica a mesma altura a todos
+  elementos.forEach(el => {
+    el.style.height = `${maiorAltura}px`;
+  });
+}
+
+window.addEventListener('load', igualarAlturaTodosPs);
+window.addEventListener('resize', () => {
+  setTimeout(igualarAlturaTodosPs, 100);
+});
+
+
 
   const scrollContainer = document.querySelector('.wrapper__scroll');
 
