@@ -318,9 +318,6 @@ body.loaded #site-loader {
 #footer .links .title {
   color: var(--clr-primary);
 }
-#footer .links img {
-  max-width: 80%;
-}
 #footer .links ul {
   list-style: none;
   display: flex;
@@ -353,7 +350,7 @@ body.loaded #site-loader {
   color: var(--clr-primary);
 }
 .copyright {
-  background: #000;
+  background: #fff;
 }
 .copyright .container-xxl {
   display: flex;
@@ -366,6 +363,7 @@ body.loaded #site-loader {
 }
 .copyright .copy {
   max-width: 50%;
+  color: var(--clr-primary);
 }
 .copyright .copy-delucca {
   transform-origin: 100% 50%;

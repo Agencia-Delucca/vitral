@@ -1,10 +1,10 @@
 <footer id="footer">
   <div class="links py-5">
     <div class="container-xxl">
-      <div class="row row-cols-md-2 row-cols-lg-4">
+      <div class="row row-cols-md-2 row-cols-xxl-4 gx-md-5">
         <div class="col item">
           <a href="<?php echo home_url(); ?>">
-            <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo-vitral.svg" alt="Logo Vitral" class="img-fluid" title="Ir para a página inicial">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo-vitral-33-anos-horizontal.svg" alt="Logo Vitral" class="img-fluid" title="Ir para a página inicial">
           </a>
           <p class="text-primary mt-3 mb-0">
             Líder no segmento de esquadrias em alumínio, transformamos espaços com soluções inovadoras e personalizadas, valorizando cada detalhe para criar ambientes únicos e inspiradores.
@@ -96,9 +96,9 @@
       <div class="copy">
         Copyright 2025 &reg; Todos os direitos reservados. Vitral Alumínio e Vidro
       </div>
-      <a href="https://www.agenciadelucca.com.br" target="_blank" rel="noopener noreferrer" class="copy-delucca" aria-label="Site da Agência Delucca" title="Ir para o site da Agência Delucca">
+      <!-- <a href="https://www.agenciadelucca.com.br" target="_blank" rel="noopener noreferrer" class="copy-delucca" aria-label="Site da Agência Delucca" title="Ir para o site da Agência Delucca">
         <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo-delucca.svg" alt="Agência Delucca">
-      </a>
+      </a> -->
     </div>
   </div>
 </footer>
