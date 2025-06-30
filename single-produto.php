@@ -153,10 +153,22 @@ $comparativo_titulo = get_field('comparativo_titulo');
             ?>
             <div class="slide">
               <h2 class="mb-3 text-primary"><?php echo esc_html($titulo); ?></h2>
-
+              
               <div class="swiper-wrapper mb-5 pb-5">
-                <?php foreach ($cores as $cor): ?>
-                  <img src="<?php echo esc_url($cor['img']); ?>" alt="<?php echo esc_attr($cor['name']); ?>" class="swiper-slide">
+                <?php foreach ($cores as $cor): 
+                  $video = $cor['video'];  
+                ?>
+                  <div class="content__wrapper swiper-slide">
+                    <img src="<?php echo esc_url($cor['img']); ?>" alt="<?php echo esc_attr($cor['name']); ?>">
+                    <?php if ($video) : ?>
+                      <div class="video__wrapper">
+                        <a href="<?= $video; ?>" data-fancybox>
+                          <img src="<?= esc_url(get_template_directory_uri() . '/assets/imgs/play-clean.svg'); ?>" alt="Thumbnail do vídeo" title="Assistir vídeo do produto">
+                          Ver vídeo
+                        </a>
+                      </div>
+                    <?php endif; ?>
+                  </div>
                 <?php endforeach; ?>
               </div>
               <div class="swiper-pagination"></div>
@@ -179,9 +191,9 @@ $comparativo_titulo = get_field('comparativo_titulo');
               <div class="segmento">
                 <?php if (have_rows('coluna')) : ?>
                   <?php while (have_rows('coluna')) : the_row(); ?>
-                    <p>
+                    <span>
                       <?= get_sub_field('item'); ?>
-                    </p>
+                    </span>
                   <?php endwhile; ?>
                 <?php endif; ?>
               </div>
@@ -196,7 +208,12 @@ $comparativo_titulo = get_field('comparativo_titulo');
                 <div class="linha">
                   <?php if (have_rows('coluna')) : ?>
                     <?php while (have_rows('coluna')) : the_row(); ?>
-                      <p><?= get_sub_field('item'); ?></p>
+                      <span>
+                        <?php if (get_sub_field('icone')) : ?>
+                          <img src="<?= get_sub_field('icone'); ?>" alt="Ícone">
+                        <?php endif; ?>
+                        <?= get_sub_field('item'); ?>
+                      </span>
                     <?php endwhile; ?>
                   <?php endif; ?>
                 </div>
@@ -210,31 +227,31 @@ $comparativo_titulo = get_field('comparativo_titulo');
 </div>
 
 <script>
-function igualarAlturaTodosPs() {
-  const elementos = document.querySelectorAll('.tabela p');
-  if (!elementos.length) return;
+  function igualarAlturaTodosPs() {
+    const elementos = document.querySelectorAll('.tabela span');
+    if (!elementos.length) return;
 
-  // Zera altura antes
-  elementos.forEach(el => el.style.height = 'auto');
+    // Zera altura antes
+    elementos.forEach(el => el.style.height = 'auto');
 
-  // Acha a maior altura
-  let maiorAltura = 0;
-  elementos.forEach(el => {
-    if (el.offsetHeight > maiorAltura) {
-      maiorAltura = el.offsetHeight;
-    }
+    // Acha a maior altura
+    let maiorAltura = 0;
+    elementos.forEach(el => {
+      if (el.offsetHeight > maiorAltura) {
+        maiorAltura = el.offsetHeight;
+      }
+    });
+
+    // Aplica a mesma altura a todos
+    elementos.forEach(el => {
+      el.style.height = `${maiorAltura}px`;
+    });
+  }
+
+  window.addEventListener('load', igualarAlturaTodosPs);
+  window.addEventListener('resize', () => {
+    setTimeout(igualarAlturaTodosPs, 100);
   });
-
-  // Aplica a mesma altura a todos
-  elementos.forEach(el => {
-    el.style.height = `${maiorAltura}px`;
-  });
-}
-
-window.addEventListener('load', igualarAlturaTodosPs);
-window.addEventListener('resize', () => {
-  setTimeout(igualarAlturaTodosPs, 100);
-});
 
 
 

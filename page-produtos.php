@@ -72,8 +72,16 @@ $inovacao_link = get_field('inovacao_link');
         while (have_rows('inovacao_item')) : the_row();
           $inovacao_imagem = get_sub_field('imagem');
           $inovacao_texto = get_sub_field('texto');
+          $video = get_sub_field('video');
       ?>
           <div class="item">
+            <?php if ($video) : ?>
+              <div class="video__wrapper">
+                <a href="<?= $video; ?>" data-fancybox>
+                  <img src="<?= esc_url(get_template_directory_uri() . '/assets/imgs/play-clean.svg'); ?>" alt="Thumbnail do vídeo" title="Assistir vídeo do produto">
+                </a>
+              </div>
+            <?php endif; ?>
             <div class="text__wrapper">
               <?= $inovacao_texto; ?>
             </div>

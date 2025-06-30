@@ -183,7 +183,7 @@ $atendimento_img_mob = get_field('atendimento_img_mob');
                     </div>
                     <?php if ($video) : ?>
                       <div class="video">
-                        <a href="<?= esc_url($video); ?>" data-fancybox>
+                        <a href="<?= ($video); ?>" data-fancybox>
                           <img src="<?= esc_url(get_template_directory_uri() . '/assets/imgs/play.svg'); ?>" alt="Play">
                         </a>
                       </div>

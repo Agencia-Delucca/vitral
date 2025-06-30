@@ -172,10 +172,6 @@ body {
   background: #000;
 }
 /* DEPOIMENTOS */
-.fancybox__content {
-  aspect-ratio: auto !important;
-  width: auto !important;
-}
 #home .depoimentos {
   background: #EEE;
 }
@@ -642,12 +638,6 @@ body {
   }
   #home .depoimentos__slide .text__wrapper {
     padding: 32px 16px;
-  }
-  .fancybox__viewport {
-    height: 100dvh !important;
-  }
-  .fancybox__content {
-    width: 80dvw !important;
   }
   /* PRODUTOS */
   #home .produtos .title {

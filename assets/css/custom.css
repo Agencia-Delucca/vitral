@@ -333,6 +333,7 @@ body.loaded #site-loader {
 }
 #footer .sociais .sociais__redes {
   display: flex;
+  flex-wrap: wrap;
   gap: 16px;
 }
 #footer .sociais .sociais__redes img {
@@ -348,6 +349,7 @@ body.loaded #site-loader {
   align-items: center;
   gap: 8px;
   color: var(--clr-primary);
+  word-break: break-all;
 }
 .copyright {
   background: #fff;
