@@ -65,10 +65,10 @@ $bottom_imagem_m = get_field('bottom_imagem_m');
               </span>
             </a>
             <p class="canais__wrapper mb-0">
-              <a href="tel:+5517981680230" target="_blank" rel="noopener noreferrer" class="canais__wrapper">
+              <a href="tel:+5517997577503" target="_blank" rel="noopener noreferrer" class="canais__wrapper">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/tel-white-icon.svg" alt="Logo de telefone" class="img-fluid">
                 <span>
-                  <b>Atendimento:</b> (17) 98168.0230
+                  <b>Atendimento:</b> (17) 99757.7503
                 </span>
               </a>
             </p>

@@ -1,8 +1,8 @@
 <footer id="footer">
   <div class="links py-5">
     <div class="container-xxl">
-      <div class="row row-cols-md-2 row-cols-lg-4 gx-md-1 gx-lg-5">
-        <div class="col item">
+      <div class="row gx-md-1 gx-lg-5">
+        <div class="col-12 col-md-6 col-lg item">
           <a href="<?php echo home_url(); ?>">
             <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/logo-vitral-33-anos-horizontal.svg" alt="Logo Vitral" class="img-fluid" title="Ir para a página inicial">
           </a>
@@ -11,7 +11,7 @@
           </p>
         </div>
 
-        <div class="col item">
+        <div class="col-12 col-md-6 col-lg-2 item">
           <span class="title fw-bold text-uppercase">
             Mapa do site
           </span>
@@ -25,7 +25,7 @@
           ?>
         </div>
 
-        <div class="col item">
+        <div class="col-12 col-md-6 col-lg item">
           <span class="title fw-bold text-uppercase">
             Central de atendimento
           </span>
@@ -37,10 +37,10 @@
               </span>
             </a>
             <p class="canais__wrapper mb-0">
-              <a href="tel:+5517981680230" target="_blank" rel="noopener noreferrer" class="canais__wrapper">
+              <a href="tel:+5517997577503" target="_blank" rel="noopener noreferrer" class="canais__wrapper">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/imgs/tel-icon.svg" alt="Logo de telefone" class="img-fluid">
                 <span>
-                  <b>Atendimento:</b> (17) 98168.0230
+                  <b>Atendimento:</b> (17) 99757.7503
                 </span>
               </a>
             </p>
@@ -63,7 +63,7 @@
           </div>
         </div>
 
-        <div class="col item">
+        <div class="col-12 col-md-6 col-lg item">
           <div class="sociais">
             <span class="title fw-bold text-uppercase">
               Siga nossas redes sociais

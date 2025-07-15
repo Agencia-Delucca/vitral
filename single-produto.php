@@ -179,7 +179,7 @@ $comparativo_titulo = get_field('comparativo_titulo');
     </div>
   <?php endif; ?>
 
-  <?php if ($comparativo) : ?>
+  <?php if ($comparativo_titulo) : ?>
     <div class="container-xxl comparativo pb-5">
       <h2 class="text-primary mb-3">
         <?= $comparativo_titulo; ?>
