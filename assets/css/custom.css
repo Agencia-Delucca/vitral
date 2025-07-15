@@ -349,7 +349,8 @@ body.loaded #site-loader {
   align-items: center;
   gap: 8px;
   color: var(--clr-primary);
-  word-break: break-all;
+  word-break: break-word;
+  max-width: 370px;
 }
 .copyright {
   background: #fff;
