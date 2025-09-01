@@ -223,3 +223,23 @@
     text-align: center;
   }
 }
+@media (min-width: 1025px) and (max-width: 1366px) {
+  #produtos .inovacoes .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #produtos .inovacoes .grid .item:nth-child(13n + 1),
+  #produtos .inovacoes .grid .item:nth-child(13n + 2),
+  #produtos .inovacoes .grid .item:nth-child(13n + 3),
+  #produtos .inovacoes .grid .item:nth-child(13n + 4),
+  #produtos .inovacoes .grid .item:nth-child(13n + 5),
+  #produtos .inovacoes .grid .item:nth-child(13n + 6),
+  #produtos .inovacoes .grid .item:nth-child(13n + 7),
+  #produtos .inovacoes .grid .item:nth-child(13n + 8),
+  #produtos .inovacoes .grid .item:nth-child(13n + 9),
+  #produtos .inovacoes .grid .item:nth-child(13n + 10),
+  #produtos .inovacoes .grid .item:nth-child(13n + 11),
+  #produtos .inovacoes .grid .item:nth-child(13n + 12),
+  #produtos .inovacoes .grid .item:nth-child(13n + 13) { 
+    grid-column: auto; 
+  }
+}
